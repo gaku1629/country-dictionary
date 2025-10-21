@@ -1,24 +1,23 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { getCountryInfo } from '@/services/api/get/countryInfo';
+import { getCountryInfo } from '@/services/api/get/countryInfo'
 
-export const useFlagsStore = defineStore('flags', () => {
-    state: () => ({
-        flags: ref([]),
-        flag: ref(null),
-    })
+export const useFlagsStore = defineStore('flags', {
+  state: () => ({
+    flags: ref([]),
+    flag: ref(null),
+    userInput: ref(''),
+  }),
 
-    actions: {
-        getFlagsApi (){
-            const result = getCountryInfo();
-            flags.value = result.flags.value;
-        }
+  actions: {
+    getFlags() {
+      const flags = getCountryInfo()
+      return flags
+    },
 
-        selectFlag (){
-            flag = flags.value.filter((flag) => flag.)
-        }
-
-
-    }
-    console.log(getFlagInfro);
+    selectFlag() {
+      const flag = this.flags.filter((flag) => flag.name.common === userInput)
+      return flag
+    },
+  },
 })
