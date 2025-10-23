@@ -14,8 +14,6 @@ onMounted(async () => {
 })
 
 const searchDetail = async () => {
-  // object型をStringに変更(JSON.stringify)
-  const toString = JSON.stringify(search.value)
   console.log(search.value)
   store.selectedCountry = search.value
   router.push({ name: 'detail' })
