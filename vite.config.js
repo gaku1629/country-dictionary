@@ -6,6 +6,10 @@ import vuetify from 'vite-plugin-vuetify'
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    'process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED': 'false',
+  },
+
   plugins: [
     vue(),
     vuetify({ autoImport: true }), // ← vuetifyを追加

@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import CountryFlag from '@/components/CountryFlag.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="w-full d-flex align-center justify-center fill-height">
+    <CountryFlag />
   </main>
 </template>
