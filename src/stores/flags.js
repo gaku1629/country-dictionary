@@ -7,6 +7,7 @@ export const useCountryStore = defineStore('flags', {
   state: () => ({
     allFlags: [],
     country: [],
+    selectedCountry: null,
   }),
 
   actions: {

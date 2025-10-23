@@ -17,7 +17,9 @@ const searchDetail = async () => {
   // object型をStringに変更(JSON.stringify)
   const toString = JSON.stringify(search.value)
   console.log(search.value)
-  return router.push({ name: 'detail', params: { search: toString } })
+  store.selectedCountry = search.value
+  router.push({ name: 'detail' })
+  //return router.push({ name: 'detail', query: { data: toString } })
 }
 </script>
 

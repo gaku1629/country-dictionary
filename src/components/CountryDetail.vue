@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useCountryStore } from '../stores/flags.js'
 
-const props = defineProps<{
-  search: string
-}>()
+const store = useCountryStore()
+const countryName = store.selectedCountry
 
-const countryName = ref('')
-
-console.log('aniki', props.search)
+console.log('受け取ったデータ:', countryName)
 </script>
 
 <template>
   <div>
-    <p>{{ props.search }}</p>
-    <h1>国の名前: {{ props.search }}</h1>
-    <h2>人口: {{ props.search }}</h2>
-    <h3>人種: {{ props.search }}</h3>
-    <h3>現地時間:{{ props.search }}</h3>
-    <h3>エリア番号: {{ props.search }}</h3>
-    <h3>マップ{{ props.search }}</h3>
-    <h3>マップ{{ props.search }}</h3>
+    <h1>国の名前: {{ countryName.name?.common }}</h1>
+    <h2>人口: {{ countryName.population }}</h2>
+    <h3>人種: {{ countryName.region }}</h3>
+    <h3>現地時間: {{ countryName.timezones?.[0] }}</h3>
+    <h3>エリア番号: {{ countryName.area }}</h3>
+    <h3>マップ: {{ countryName.maps?.googleMaps }}</h3>
   </div>
 </template>
 
