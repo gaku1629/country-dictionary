@@ -7,6 +7,7 @@ export const getCountryInfo = async (language) => {
       'https://restcountries.com/v3.1/all?fields=name,flags,languages,region,population,area,maps,timezones',
       // 'https://restcountries.com/v3.1/lang/spanish',
     )
+    console.log(res.data)
     return res.data
   } catch (err) {}
 }

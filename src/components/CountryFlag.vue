@@ -14,9 +14,10 @@ onMounted(async () => {
 })
 
 const searchDetail = async () => {
-  console.log(search.value)
   store.selectedCountry = search.value
-  router.push({ name: 'detail' })
+  console.log(store.selectedCountry)
+  await store.translateCountryInfo()
+  await router.push({ name: 'detail' })
   //return router.push({ name: 'detail', query: { data: toString } })
 }
 </script>

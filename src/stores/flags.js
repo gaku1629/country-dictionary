@@ -1,13 +1,13 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { getCountryInfo } from '@/services/api/get/countryInfo'
-import { detailCountryInfo } from '@/services/api/get/detailInfo'
+import { translateApi } from '@/services/api/post/translate'
 
 export const useCountryStore = defineStore('flags', {
   state: () => ({
     allFlags: [],
     country: [],
     selectedCountry: null,
+    translatedFlags: null,
   }),
 
   actions: {
@@ -18,11 +18,43 @@ export const useCountryStore = defineStore('flags', {
       return this.allFlags
     },
 
-    async findFlag(language) {
-      const detail = await detailCountryInfo(language)
-      this.country = detail
-      console.log(this.country)
-      return this.country
+    async translateCountryInfo() {
+      const country = this.selectedCountry
+      if (!country || !country.name?.common) {
+        console.log('翻訳対象外')
+        return
+      }
+
+      const name = await translateApi(country.name.common)
+
+      let language = ''
+      if (country.languages) {
+        const langArr = Object.values(country.languages)
+        language = await translateApi(langArr.join(','))
+      }
+
+      const region = await translateApi(country.region)
+
+      let flagAlt = null
+      if (country.flags?.alt) {
+        flagAlt = await translateApi(country.flags.alt)
+      }
+
+      this.translatedFlags = {
+        ...country,
+        translatedName: name,
+        translatedLanguages: language,
+        translatedRegion: region,
+        translatedFlagAlt: flagAlt,
+      }
+
+      console.log(
+        '翻訳結果',
+        this.translatedFlags.translatedName,
+        this.translatedFlags.translatedFlagAlt,
+        this.translatedFlags.translatedRegion,
+        this.translatedFlags.population,
+      )
     },
   },
 })
