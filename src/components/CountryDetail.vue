@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useCountryStore } from '../stores/flags.js'
-import { googleMapApi } from '@/services/api/get/googleMap.js'
 
 const store = useCountryStore()
 const countryName = store.translatedFlags
