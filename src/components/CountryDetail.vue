@@ -1,10 +1,15 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useCountryStore } from '../stores/flags.js'
+import { googleMapApi } from '@/services/api/get/googleMap.js'
 
 const store = useCountryStore()
 const countryName = store.translatedFlags
 const countryTime = ref(null)
+const apiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY
+const embedUrl = ref(
+  `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(countryName.translatedName)}`,
+)
 
 console.log('受け取ったデータ:', countryName)
 
@@ -38,7 +43,7 @@ onMounted(() => {
     <h3>人種: {{ countryName.translatedRegion }}</h3>
     <h3>現地時間: {{ countryTime }}</h3>
     <h3>エリア番号: {{ countryName.area }}</h3>
-    <h3>マップ: {{ countryName.maps?.googleMaps }}</h3>
+    <iframe width="450px" height="300px" :src="embedUrl"></iframe>
     <h3>国の説明: {{ countryName.translatedFlagAlt }}</h3>
   </div>
 </template>
