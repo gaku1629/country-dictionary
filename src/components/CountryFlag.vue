@@ -23,24 +23,33 @@ const searchDetail = async () => {
 </script>
 
 <template>
-  <v-container>
-    <v-col>
-      <div>
-        <!-- item-titleでObject配列の値を表示できる -->
+  <v-container class="bg-grey-lighten-4 rounded-lg mt-5 mb-5">
+    <v-row justify="center" class="mt-5">
+      <v-col lg="3">
         <v-combobox
           v-model="search"
           :items="getAllFlags"
           item-title="name.common"
           label="調べたい国を入力"
           clearable
-        >
-        </v-combobox>
-        <v-btn @:click="searchDetail">検索</v-btn>
-      </div>
-    </v-col>
-    <v-row>
-      <v-col v-for="flag in getAllFlags" :key="flag.name.common" cols="6">
-        <v-card class="pa-2" outlined>
+        />
+      </v-col>
+      <v-col cols="12" sm="4" md="2" lg="1" class="d-flex align-center mb-5">
+        <v-btn @click="searchDetail" block>検索</v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row justify="center">
+      <v-col
+        v-for="flag in getAllFlags"
+        :key="flag.name.common"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+        class="d-flex justify-center"
+      >
+        <v-card class="pa-4" width="250px" height="159px" hover outlined>
           <p class="font-weight-black">{{ flag.name.common }}</p>
           <v-img :src="flag.flags.png" />
         </v-card>
