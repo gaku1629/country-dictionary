@@ -6,6 +6,7 @@ import router from './router'
 import vuetify from './plugins/vuetify' // vuetifyのインポート
 
 import '@mdi/font/css/materialdesignicons.css' // mdiアイコンのCSS読み込み
+import 'aos/dist/aos.css'
 
 const app = createApp(App)
 

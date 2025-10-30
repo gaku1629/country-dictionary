@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 const store = useCountryStore()
 const getAllFlags = ref([])
 const search = ref('')
+const categories = ref(['Asia', 'Americas', 'Europe', 'ALL'])
 const router = useRouter()
 
 onMounted(async () => {
@@ -38,22 +39,22 @@ const searchDetail = async () => {
         <v-btn @click="searchDetail" block>検索</v-btn>
       </v-col>
     </v-row>
-
     <v-row justify="center">
+      <!-- <div data-aos="flip-up"> -->
       <v-col
-        v-for="flag in getAllFlags"
-        :key="flag.name.common"
         cols="12"
         sm="6"
         md="4"
         lg="3"
         class="d-flex justify-center"
+        v-for="flag in getAllFlags"
       >
         <v-card class="pa-4" width="250px" height="159px" hover outlined>
           <p class="font-weight-black">{{ flag.name.common }}</p>
           <v-img :src="flag.flags.png" />
         </v-card>
       </v-col>
+      <!-- </div> -->
     </v-row>
   </v-container>
 </template>

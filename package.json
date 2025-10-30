@@ -14,7 +14,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@animxyz/vue3": "^0.6.7",
     "@mdi/font": "^7.4.47",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.12.2",
     "dotenv": "^17.2.3",
     "pinia": "^3.0.3",
