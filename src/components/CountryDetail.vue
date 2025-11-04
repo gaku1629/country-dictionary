@@ -82,7 +82,7 @@ onMounted(() => {
       </div>
     </v-container>
      <div class="cover">
-        <h1>Dictionary Country</h1>
+        <h1>Dictionary</h1>
     </div>
   </div>
 </template>
@@ -94,7 +94,7 @@ onMounted(() => {
   border-radius: 10px;
   width: 100%;
   height: 100vh;
-  background-color: whitesmoke;
+  background-color: rgb(255, 226, 226);
   -webkit-box-shadow: 1px 1px 12px #000;
   box-shadow: 1px 1px 12px #000;
   -webkit-transform: preserve-3d;
@@ -157,7 +157,7 @@ p {
  width: 450px;
  height: 300px;
  margin: 0 auto;
- background-color: #F8FBFE;
+ background-color: #f1f1f1;
  border-radius: 8px;
  /* z-index: 1; */
  margin-left: 5px;

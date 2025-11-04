@@ -8,7 +8,23 @@ export const useCountryStore = defineStore('flags', {
     country: [],
     selectedCountry: null,
     translatedFlags: null,
+    filteredCategoriesCount: 0,
+    regions: ['Asia', 'Americas', 'Europe', 'ALL'],
+    findRegion: null,
   }),
+
+  getters: {
+    filteredFlags: (state) => {
+      if (!state.findRegion || state.findRegion === 'ALL') {
+        return state.allFlags
+      }
+      return state.allFlags.filter((flag) => flag.region === state.findRegion)
+    },
+
+    filteredCategoriesCount: (state) => {
+      return state.filteredFlags.length
+    },
+  },
 
   actions: {
     async getFlags() {
